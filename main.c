@@ -48,12 +48,13 @@ static int	arguments_check(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
+	t_state_data	s_data;
 	const int	arg_check_return = arguments_check(argc, argv);
 
 	if (arg_check_return == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	else if (arg_check_return == IMMIDIATE_SUCCESS)
 		return (EXIT_SUCCESS);
-	init_data(argc, argv);
+	init_state_data(&s_data, argc, argv);
 	return (EXIT_SUCCESS);
 }
