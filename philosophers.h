@@ -34,6 +34,20 @@ typedef enum e_state
 	DEAD,
 }	t_state;
 
+typedef struct s_philo
+{
+	size_t					id;
+	size_t					meal_c;
+	size_t					meal_complete;
+	t_state					state;
+	size_t					start;
+	size_t					last_eat;
+	struct s_state_stuff	*sdata;
+	pthread_t				thread;
+	pthread_mutex_t			*r_fork;
+	pthread_mutex_t			*l_fork;
+}					t_philo;
+
 typedef struct s_state_stuff
 {
 	size_t			philos;
