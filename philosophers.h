@@ -76,6 +76,6 @@ int		ft_atoi(const char *str);
 void	ft_bzero(void *mem, size_t count);
 void	*ft_calloc(size_t count, size_t size);
 void	init_state_data(t_state_data *s_data, int argc, char **argv);
-
+int		init_thread(t_state_data *sdata);
 
 #endif
