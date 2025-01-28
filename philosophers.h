@@ -55,7 +55,7 @@ typedef struct s_state_stuff
 	size_t			t2die;
 	size_t			t2eat;
 	size_t			t2sleep;
-	size_t			meals;
+	size_t			meal_count;
 	size_t			ded;
 	size_t			error;
 	size_t			total_meals;
