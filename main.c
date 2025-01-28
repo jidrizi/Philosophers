@@ -56,7 +56,7 @@ static int philosophize(t_state_data *sdata)
 	i = 0;
 	threads_made = 0;
 	philo_sdata = sdata->philo;
-	if (pthread_create(&monitor_thread, NULL, &monitor_routine, sdata))
+	if (pthread_create(&monitor_thread, NULL, &check_routine, sdata))
 		return (error("Something went wrong with monitoring thread...\n"),
 			EXIT_FAILURE);
 }
