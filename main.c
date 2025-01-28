@@ -46,6 +46,21 @@ static int	arguments_check(int argc, char **argv)
 	return (EXIT_SUCCESS);
 }
 
+static int philosophize(t_state_data *sdata)
+{
+	t_philo		*philo_sdata;
+	pthread_t	monitor_thread;
+	size_t		threads_made;
+	size_t		i;
+
+	i = 0;
+	threads_made = 0;
+	philo_sdata = sdata->philo;
+	if (pthread_create(&monitor_thread, NULL, &monitor_routine, sdata))
+		return (error("Something went wrong with monitoring thread...\n"),
+			EXIT_FAILURE);
+}
+
 int	main(int argc, char **argv)
 {
 	t_state_data	sdata;
@@ -59,6 +74,7 @@ int	main(int argc, char **argv)
 	if (init_thread(&sdata) == EXIT_FAILURE)
 		return (error_msg("Something went wrong when initializing thread..."),
 			EXIT_FAILURE);
-	philosophize(&sdata);
+	if (philosophize(&sdata))
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
