@@ -14,7 +14,7 @@
 
 void	init_state_data(t_state_data *s_data, int argc, char **argv)
 {
-	s_data->philos = ft_atoi(argv[1]);
+	s_data->philo_count = ft_atoi(argv[1]);
 	s_data->t2die = ft_atoi(argv[2]);
 	s_data->t2eat = ft_atoi(argv[3]);
 	s_data->t2sleep = ft_atoi(argv[4]);
@@ -33,7 +33,7 @@ static void	init_philo(t_state_data *sdata)
 	int	i;
 
 	i = 0;
-	while (i < sdata->philos)
+	while (i < sdata->philo_count)
 	{
 		sdata->philo[i].id = i + 1;
 		sdata->philo[i].meal_c = 0;
@@ -43,7 +43,7 @@ static void	init_philo(t_state_data *sdata)
 		sdata->philo[i].last_eat = get_current_time();
 		sdata->philo[i].sdata = sdata;
 		sdata->philo[i].r_fork = &sdata->forks[sdata->philo[i].id - 1];
-		if (sdata->philo[i].id == sdata->philos)
+		if (sdata->philo[i].id == sdata->philo_count)
 			sdata->philo[i].l_fork = &sdata->forks[0];
 		else
 			sdata->philo[i].l_fork = &sdata->forks[sdata->philo[i].id];
@@ -56,7 +56,7 @@ static int	init_mutex(t_state_data *sdata)
 	int	i;
 
 	i = 0;
-	while (i < sdata->philos)
+	while (i < sdata->philo_count)
 	{
 		if (pthread_mutex_init(&(sdata->forks[i]), NULL))
 			return (EXIT_FAILURE);
@@ -73,10 +73,10 @@ static int	init_mutex(t_state_data *sdata)
 
 int	init_thread(t_state_data *sdata)
 {
-	sdata->philo = malloc(sizeof(t_philo) * sdata->philos);
+	sdata->philo = malloc(sizeof(t_philo) * sdata->philo_count);
 	if (!sdata->philo)
 		return (EXIT_FAILURE);
-	sdata->forks = malloc(sizeof(pthread_mutex_t) * sdata->philos);
+	sdata->forks = malloc(sizeof(pthread_mutex_t) * sdata->philo_count);
 	if (!sdata->forks)
 		return (free(sdata->philo), EXIT_FAILURE);
 	if (init_mutex(sdata) == EXIT_FAILURE)

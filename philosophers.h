@@ -23,6 +23,7 @@
 # include <unistd.h>
 # include <sys/time.h>
 # include <limits.h>
+# include <stdbool.h>
 
 // TYPES
 
@@ -50,7 +51,7 @@ typedef struct s_philo
 
 typedef struct s_state_stuff
 {
-	size_t			philos;
+	size_t			philo_count;
 	size_t			t2die;
 	size_t			t2eat;
 	size_t			t2sleep;
@@ -77,5 +78,6 @@ void	ft_bzero(void *mem, size_t count);
 void	*ft_calloc(size_t count, size_t size);
 void	init_state_data(t_state_data *s_data, int argc, char **argv);
 int		init_thread(t_state_data *sdata);
+void	*check_routine(void *arg);
 
 #endif
