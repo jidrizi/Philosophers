@@ -7,7 +7,7 @@ NAME = philosophers
 
 DEPS = philosophers.h
 
-SRCS = main.c error_msg.c misc.c
+SRCS = main.c error.c misc.c check.c ft_calloc.c inits.c
 
 OBJS = $(SRCS:%.c=bin/%.o)
 

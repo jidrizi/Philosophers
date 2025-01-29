@@ -80,5 +80,8 @@ void	*ft_calloc(size_t count, size_t size);
 void	init_state_data(t_state_data *s_data, int argc, char **argv);
 int		init_thread(t_state_data *sdata);
 void	*check_routine(void *arg);
+int	set_death(t_state_data *sdata, int i);
+void	free_and_exit(t_state_data *sdata);
+int	create_threads(t_philo *philo_data, t_state_data *sdata);
 
 #endif

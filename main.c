@@ -50,15 +50,28 @@ static int philosophize(t_state_data *sdata)
 {
 	t_philo		*philo_sdata;
 	pthread_t	monitor_thread;
-	size_t		threads_made;
-	size_t		i;
+	int			threads_made;
+	int			i;
 
 	i = 0;
 	threads_made = 0;
 	philo_sdata = sdata->philo;
 	if (pthread_create(&monitor_thread, NULL, &check_routine, sdata))
-		return (error("Something went wrong with monitoring thread...\n"),
+		return (error_msg("Something went wrong with monitoring thread...\n"),
 			EXIT_FAILURE);
+	threads_made = create_threads(philo_sdata, sdata);
+	while (i < threads_made)
+	{
+		philo_sdata = &sdata->philo[i];
+		if (pthread_join(philo_sdata->thread, NULL))
+			return (error_msg("Something went wrong with thread join...\n"),
+				EXIT_FAILURE);
+		i++;
+	}
+	if (pthread_join(monitor_thread, NULL))
+		return (error_msg("Something went wrong with monitor thread\n"),
+			EXIT_FAILURE);
+	return(free_and_exit(sdata), EXIT_SUCCESS);
 }
 
 int	main(int argc, char **argv)
