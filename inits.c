@@ -22,9 +22,9 @@ void	init_state_data(t_state_data *s_data, int argc, char **argv)
 	s_data->ded = 0;
 	s_data->total_meals = 0;
 	if (argc == 6)
-		s_data->meals = ft_atoi(argv[5]);
+		s_data->meal_count = ft_atoi(argv[5]);
 	else
-		s_data->meals = -1;
+		s_data->meal_count = -1;
 	return (0);
 }
 
