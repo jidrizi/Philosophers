@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   idk_what_to_name.c                                 :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jidrizi <jidrizi@student.42.fr>            #+#  +:+       +#+        */
+/*   By: jidrizi <jidrizi@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-01-28 20:55:07 by jidrizi           #+#    #+#             */
-/*   Updated: 2025-01-28 20:55:07 by jidrizi          ###   ########.fr       */
+/*   Created: 2025/01/28 20:55:07 by jidrizi           #+#    #+#             */
+/*   Updated: 2025/02/01 18:42:56 by jidrizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <philosophers.h>
+#include "philosophers.h"
 
 int	checker(t_philo *philo)
 {
@@ -23,7 +23,7 @@ int	checker(t_philo *philo)
 	return (0);
 }
 
-static int	check_death(t_state_data *sdata)
+int	check_death(t_state_data *sdata)
 {
 	pthread_mutex_lock(&sdata->ded_mutex);
 	if (sdata->ded)
@@ -35,7 +35,7 @@ static int	check_death(t_state_data *sdata)
 	return (0);
 }
 
-static int	time_check(t_state_data *sdata)
+int	time_check(t_state_data *sdata)
 {
 	int		i;
 
@@ -50,7 +50,7 @@ static int	time_check(t_state_data *sdata)
 	return (0);
 }
 
-static int	meal_check(t_state_data *sdata)
+int	meal_check(t_state_data *sdata)
 {
 	int	i;
 
@@ -92,4 +92,5 @@ void	*check_routine(void *arg)
 			stop = true;
 		usleep(500);
 	}
+	return (NULL);
 }

@@ -33,16 +33,17 @@ typedef enum e_state
 	EATING,
 	SLEEPING,
 	DEAD,
+	FORKING,
 }	t_state;
 
 typedef struct s_philo
 {
-	size_t					id;
-	size_t					meal_c;
-	size_t					meal_complete;
+	int						id;
+	int						meal_c;
+	int						meal_complete;
 	t_state					state;
-	size_t					start;
-	size_t					last_eat;
+	long int				start;
+	long int				last_eat;
 	struct s_state_stuff	*sdata;
 	pthread_t				thread;
 	pthread_mutex_t			*r_fork;
@@ -51,14 +52,14 @@ typedef struct s_philo
 
 typedef struct s_state_stuff
 {
-	size_t			philo_count;
-	size_t			t2die;
-	size_t			t2eat;
-	size_t			t2sleep;
-	size_t			meal_count;
-	size_t			ded;
-	size_t			error;
-	size_t			total_meals;
+	int				philo_count;
+	long int		t2die;
+	long int		t2eat;
+	long int		t2sleep;
+	int				meal_count;
+	int				ded;
+	int				error;
+	int				total_meals;
 	t_philo			*philo;
 	pthread_mutex_t	*forks;	
 	pthread_mutex_t	msg;
@@ -67,7 +68,6 @@ typedef struct s_state_stuff
 	pthread_mutex_t	sleeping_mutex;
 	pthread_mutex_t	ded_mutex;
 }	t_state_data;
-
 
 // PROTOTYPES
 void	error_msg(char *msg);

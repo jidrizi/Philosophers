@@ -6,7 +6,7 @@
 /*   By: jidrizi <jidrizi@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 19:15:31 by jidrizi           #+#    #+#             */
-/*   Updated: 2024/12/05 14:14:33 by jidrizi          ###   ########.fr       */
+/*   Updated: 2025/02/01 18:41:43 by jidrizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	arguments_check(int argc, char **argv)
 	return (EXIT_SUCCESS);
 }
 
-static int philosophize(t_state_data *sdata)
+static int	philosophize(t_state_data *sdata)
 {
 	t_philo		*philo_sdata;
 	pthread_t	monitor_thread;
@@ -71,13 +71,13 @@ static int philosophize(t_state_data *sdata)
 	if (pthread_join(monitor_thread, NULL))
 		return (error_msg("Something went wrong with monitor thread\n"),
 			EXIT_FAILURE);
-	return(free_and_exit(sdata), EXIT_SUCCESS);
+	return (free_and_exit(sdata), EXIT_SUCCESS);
 }
 
 int	main(int argc, char **argv)
 {
 	t_state_data	sdata;
-	const int	arg_check_return = arguments_check(argc, argv);
+	const int		arg_check_return = arguments_check(argc, argv);
 
 	if (arg_check_return == EXIT_FAILURE)
 		return (EXIT_FAILURE);

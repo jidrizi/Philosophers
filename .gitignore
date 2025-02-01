@@ -3,3 +3,5 @@ philosophers
 *.a
 .vscode*
 .DS_Store
+bin
+philosophers

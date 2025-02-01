@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   make_threads.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jidrizi <jidrizi@student.42.fr>            #+#  +:+       +#+        */
+/*   By: jidrizi <jidrizi@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-01-28 21:51:32 by jidrizi           #+#    #+#             */
-/*   Updated: 2025-01-28 21:51:32 by jidrizi          ###   ########.fr       */
+/*   Created: 2025/01/28 21:51:32 by jidrizi           #+#    #+#             */
+/*   Updated: 2025/02/01 18:35:50 by jidrizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <philosophers.h>
+#include "philosophers.h"
 
 int	create_threads(t_philo *philo_data, t_state_data *sdata)
 {
@@ -20,7 +20,7 @@ int	create_threads(t_philo *philo_data, t_state_data *sdata)
 
 	i = 0;
 	threads_made = 0;
-	while (++i < sdata->philo_count)
+	while (i < sdata->philo_count)
 	{
 		philo_data = &sdata->philo[i];
 		pthread_mutex_lock(&sdata->ded_mutex);

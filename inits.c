@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jidrizi <jidrizi@student.42.fr>            #+#  +:+       +#+        */
+/*   By: jidrizi <jidrizi@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-01-19 21:14:06 by jidrizi           #+#    #+#             */
-/*   Updated: 2025-01-19 21:14:06 by jidrizi          ###   ########.fr       */
+/*   Created: 2025/01/19 21:14:06 by jidrizi           #+#    #+#             */
+/*   Updated: 2025/02/01 18:40:44 by jidrizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	init_state_data(t_state_data *s_data, int argc, char **argv)
 		s_data->meal_count = ft_atoi(argv[5]);
 	else
 		s_data->meal_count = -1;
-	return (0);
 }
 
 static void	init_philo(t_state_data *sdata)
@@ -63,10 +62,10 @@ static int	init_mutex(t_state_data *sdata)
 		i++;
 	}
 	if (pthread_mutex_init(&sdata->msg, NULL)
-	|| pthread_mutex_init(&sdata->state_mutex, NULL)
-	|| pthread_mutex_init(&sdata->eating_mutex, NULL)
-	|| pthread_mutex_init(&sdata->sleeping_mutex, NULL)
-	|| pthread_mutex_init(&sdata->ded_mutex, NULL))
+		|| pthread_mutex_init(&sdata->state_mutex, NULL)
+		|| pthread_mutex_init(&sdata->eating_mutex, NULL)
+		|| pthread_mutex_init(&sdata->sleeping_mutex, NULL)
+		|| pthread_mutex_init(&sdata->ded_mutex, NULL))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

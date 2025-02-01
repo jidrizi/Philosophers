@@ -1,13 +1,14 @@
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
 NAME = philosophers
 
 DEPS = philosophers.h
 
-SRCS = main.c error.c misc.c check.c ft_calloc.c inits.c
+SRCS = main.c error_stuff.c misc.c check.c ft_calloc.c inits.c  philozophize.c \
+		make_threads.c
 
 OBJS = $(SRCS:%.c=bin/%.o)
 
