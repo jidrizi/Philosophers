@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_msg.c                                        :+:      :+:    :+:   */
+/*   error_stuff.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jidrizi <jidrizi@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 16:26:41 by jidrizi           #+#    #+#             */
-/*   Updated: 2024/11/17 17:43:46 by jidrizi          ###   ########.fr       */
+/*   Updated: 2025/02/01 18:12:26 by jidrizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	error_msg(char *msg)
 {
-	write(STDERR_FILENO, "Error: ", 7);
 	write(STDERR_FILENO, msg, ft_strlen(msg));
 }
 
@@ -70,4 +69,26 @@ void	free_and_exit(t_state_data *sdata)
 	pthread_mutex_destroy(&sdata->msg);
 	pthread_mutex_destroy(&sdata->ded_mutex);
 	pthread_mutex_destroy(&sdata->sleeping_mutex);
+}
+
+void	philo_msg(t_philo *philo)
+{
+	if (check_death(philo->sdata))
+		return ;
+	pthread_mutex_lock(&philo->sdata->msg);
+	pthread_mutex_lock(&philo->sdata->state_mutex);
+	if (philo->state == FORKING)
+		printf("%ld %d has taken a fork\n", get_current_time() - philo->start,
+			philo->id);
+	else if (philo->state == EATING)
+		printf("%ld %d is eating\n", get_current_time() - philo->start,
+			philo->id);
+	else if (philo->state == SLEEPING)
+		printf("%ld %d is sleeping\n", get_current_time() - philo->start,
+			philo->id);
+	else if (philo->state == THINKING)
+		printf("%ld %d is thinking\n", get_current_time() - philo->start,
+			philo->id);
+	pthread_mutex_unlock(&philo->sdata->msg);
+	pthread_mutex_unlock(&philo->sdata->state_mutex);
 }

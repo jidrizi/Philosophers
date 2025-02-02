@@ -6,7 +6,7 @@
 /*   By: jidrizi <jidrizi@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 15:45:14 by jidrizi           #+#    #+#             */
-/*   Updated: 2024/12/04 15:10:08 by jidrizi          ###   ########.fr       */
+/*   Updated: 2025/02/01 18:42:36 by jidrizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,24 @@ void	error_msg(char *msg);
 int		ft_strlen(char *str);
 int		ft_isdigit(char *str);
 int		ft_atoi(const char *str);
+void	ft_usleep(size_t milliseconds, t_state_data *sdata);
 size_t	get_current_time(void);
 void	ft_bzero(void *mem, size_t count);
 void	*ft_calloc(size_t count, size_t size);
 void	init_state_data(t_state_data *s_data, int argc, char **argv);
 int		init_thread(t_state_data *sdata);
 void	*check_routine(void *arg);
+int		checker(t_philo *philo);
+int		check_death(t_state_data *sdata);
+int		time_check(t_state_data *sdata);
+int		meal_check(t_state_data *sdata);
 int		set_death(t_state_data *sdata, int i);
 void	free_and_exit(t_state_data *sdata);
+void	philo_msg(t_philo *philo);
 int		create_threads(t_philo *philo_data, t_state_data *sdata);
+int		sleeping(t_philo *philo);
+int		thinking(t_philo *philo);
+int		eating(t_philo *philo);
+void	*philo(void *philo);
 
 #endif

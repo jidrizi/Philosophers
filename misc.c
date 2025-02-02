@@ -6,7 +6,7 @@
 /*   By: jidrizi <jidrizi@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:34:24 by jidrizi           #+#    #+#             */
-/*   Updated: 2024/11/17 18:40:19 by jidrizi          ###   ########.fr       */
+/*   Updated: 2025/02/01 18:23:39 by jidrizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,18 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (res * sgn);
+}
+
+void	ft_usleep(size_t milliseconds, t_state_data *sdata)
+{
+	size_t	start;
+
+	if (check_death(sdata))
+		return ;
+	start = get_current_time();
+	usleep(milliseconds / 4 * 3);
+	while ((get_current_time() - start < milliseconds))
+		usleep(60);
 }
 
 size_t	get_current_time(void)
